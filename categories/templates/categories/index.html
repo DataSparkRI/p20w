@@ -1,0 +1,96 @@
+{% load mathfilters %}
+<html>
+<head>
+	<title>{{ title_element }}</title>
+
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900|Open+Sans" />
+	<link rel="stylesheet" type="text/css" href="{% static 'categories/style.css' %}">
+</head>
+
+<body id={% if is_home %}homepage{% else %}nothomepage{% endif %}>
+	<section id='site_header'>
+		<div id='site_title'><a href='/'>RI Skills & Jobs</a></div>
+		<ul id='site_nav'>
+			{% for navcat in categories %}
+				<li{% if navcat.id == category.id %} class=current {% endif %}>
+					<a href='/{{ navcat.id }}'>{{ navcat.navigation_name }}</a>
+				</li>
+			{% endfor %}
+			<!-- li class=current><a href='/categories/1'>K-12 Education</a></li>
+			<li><a href='/categories/2'>Higher Ed</a></li>
+			<li><a href='/categories/3'>Workforce</a></li-->
+		</ul>
+	</section>
+
+	<section id='page_header' style='background-image: url({{ category.category_page_image.url }}); background-position-y: {{category.category_page_image_offset }}%;'><h1>{{ header_text }}</h1></section>
+
+
+	<section id='page_intro'>
+		<h1>{{category.intro_header}}</h1>
+		<div class='text'>{{category.intro_text | safe}}</div>
+	</section>
+
+	{% if is_home or indicators %}
+		<section id=at_a_glance>
+			<h1>{{ at_a_glance_header }}</h2>
+			<div id=popstats>
+				{% for popstat in popstats %}
+				<a href={{ popstat.link }}>
+					<div class=popstat>
+						<span class=label>{{ popstat.label }}</span>
+						<span class=stat>{{ popstat.stat }}</span>
+						<span class=explainer>{{ popstat.explainer }}</span>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}	
+
+	{% if indicators %}
+		<section id=indicators>
+		{% for indicator in indicators %}
+			<div class=indicator>
+				<h1>{{indicator.name}}</h1>
+				{% if indicator.question_set %} 
+					{% for question in indicator.question_set.all %}
+						<h2><a id='q{{ question.id }}'></a>{{ question.question }}</h2>
+
+						<div class=text>{{ question.text | safe }}</div>
+						<div class=dashboard style='padding-bottom: calc({{ question.aspect_ratio_height|div:question.aspect_ratio_width|mul:100 }}% + 55px);'>{{ question.dashboard_embed | safe }}</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+		{% endfor %}
+		</section>
+	{% elif is_home %}
+		<section id=homepage_belowfold>		
+			<h1 style="color: dimgray">How it works</h1>
+			<p class=text style='font-size: 1.1em;'>If we start with asking how to meet growing industry’s need, Rhode Island will become more attractive to neighboring companies, boost existing RI companies, and turn up the economic engine to generate more jobs for all Rhode Islanders.</p>
+
+			<div id=popstats>
+				<div class=popstat>
+					<span class=label>Unemployment</span>
+					<span class=stat>4%</span>
+					<span class=explainer></span>
+				</div>
+
+				<div class=popstat>
+					<span class=label>Employed</span>
+					<span class=stat>532K</span>
+					<span class=explainer></span>
+				</div>
+
+				<div class=popstat>
+					<span class=label>Employers</span>
+					<span class=stat>37.5K</span>
+					<span class=explainer></span>
+				</div>
+		</section>
+	{% else %}
+		<p>No indicators to show in this category.</p>
+	{% endif %}
+
+	<section id='site_footer'>Footer stuff goes here</section>
+</body>

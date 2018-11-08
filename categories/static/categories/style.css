@@ -1,0 +1,279 @@
+BODY {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0px;
+}
+
+section {
+	padding: 10em 20%;
+}
+#homepage section {
+	padding: 5em 20%;
+}
+
+/* set these to twice the section padding% */
+#indicators .indicator:nth-child(even) {
+	margin-left: -40%;
+	margin-right: -40%;
+	padding-left: 40%;
+	padding-right: 40%;
+}
+
+#site_title, #site_nav, h1, h2, h3, .popstat {
+	font-family: "Lato";
+}
+
+.text {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 170%;
+	color: dimgray;
+}
+
+#site_header, 
+#homepage #site_header {
+	background-color: steelblue;
+	color: white;
+	padding: 0.3em 0.3em 0em 0.3em;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#site_title {	
+	font-size: 1.8em;
+	font-weight: 500;
+	padding-bottom: 0.2em;
+	align-self: center;
+}
+
+#site_title a {
+	color: white;
+	text-decoration: none;
+}
+
+#site_nav {
+	margin: 0em;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: stretch;
+
+	list-style-type: none;
+}
+
+#site_nav li {
+	padding: 0.5em 1.2em;
+}
+
+#site_nav li a {
+	color: lightsteelblue;
+	text-decoration: none;
+}
+
+#site_nav li.current {
+	border-bottom: 5px solid lightsteelblue;
+}
+
+#site_nav li:hover {
+	border-bottom: 5px solid white;
+}
+
+#site_nav li:hover a {
+	color: white;
+}
+
+#page_header,
+#homepage #page_header {
+	background-color: black;
+	/* background-position-y: 50%; */
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: white;
+	font-size: 3.4em;
+	margin: 0px;
+	opacity: 0.70;
+	padding: 2.5%;
+	text-align: center;
+	text-shadow: 2px 2px 5px black;
+	font-weight: 800;
+}
+
+#page_intro,
+#homepage #page_intro {
+	padding-top: 0;
+}
+
+#page_intro h1 {
+	border-top: 5px solid #EFEFEF;
+	border-bottom: 5px solid #EFEFEF;
+	color: steelblue;
+	font-size: 2.4em;
+	font-weight: 800;
+	letter-spacing: .05em;
+	margin-bottom: 1em;
+	padding: .5em;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#page_intro .text {
+	font-size: 1.4em;
+	line-height: 200%;
+}
+
+#at_a_glance {
+	background-color: steelblue;
+}
+
+#at_a_glance h1 {
+	color: white;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	margin-top: 0em;
+
+}
+
+#popstats {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: flex-start;
+}
+
+#popstats .popstat {
+	background: white;
+	border: 2px solid lightsteelblue;
+	margin: 1em;
+	padding-bottom: .25em;
+	text-align: center;
+	width: 17em;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+
+#popstats a {
+	text-decoration: none;
+}
+
+#popstats .popstat .stat {
+	color: steelblue;
+	font-size: 5em;
+	font-weight: 800;
+	letter-spacing: 0.05em;
+	padding: .25em;
+}
+
+#popstats .popstat .label {
+	background-color: steelblue;
+	color: white;
+	padding: 0.2em;
+	letter-spacing: 0.5em;
+	text-transform: uppercase;
+	font-weight: 200;
+}
+
+#popstats .popstat .explainer {
+	color: lightsteelblue;
+	min-height: 2.5em;
+	letter-spacing: 0.1em
+	margin-bottom: auto;
+	padding: 0.2em;
+}
+
+#popstats .popstat:hover {
+	background: steelblue;
+}
+
+#popstats .popstat:hover .label {
+	background-color: lightsteelblue;
+	color: white;
+}
+
+#popstats .popstat:hover .stat {
+	color: white;
+}
+
+#popstats .popstat:hover .explainer {
+	color: gainsboro;
+}
+
+
+#indicators {
+	padding-bottom: 0;
+}
+
+#indicators .indicator {
+	padding: 7em 0 10em 0;
+}
+
+#indicators .indicator:first-child {
+	padding-top: 0;
+}
+
+#indicators .indicator:nth-child(even) {
+	background-color: #EFEFEF;
+}
+
+#indicators .indicator h1 {
+	color: silver;
+	font-size: 1.2em;
+	font-weight: 400;
+}
+
+#indicators .indicator h2 {
+	color: steelblue;
+	font-size: 2em;
+}
+
+#indicators .indicator .dashboard {
+	border: 1px solid lightgray;
+	position: relative;
+	width: 100%;
+	height: 0;
+	margin-top: 1em;
+}
+
+#indicators .indicator .dashboard + h2 {
+	margin-top: 3em;
+}
+
+#indicators .indicator .dashboard iframe {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#homepage_belowfold H1 {
+	color: dimgray;
+}
+
+#homepage_belowfold .popstat {
+	border-color: silver;
+}
+
+#homepage_belowfold .popstat .label {
+	background-color: silver;
+}
+
+#homepage_belowfold .popstat .stat {
+	color: dimgray;
+}
+
+
+#site_footer {
+	background-color: steelblue;
+	color: #EFEFEF;
+	font-size: 0.8em;
+	font-weight: 300;
+	min-height: 5em;
+	padding: 5px;
+}
