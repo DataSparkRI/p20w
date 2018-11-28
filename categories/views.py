@@ -4,10 +4,10 @@ from .models import Category
 from indicators.models import Indicator
 
 def homepage(request):
-	return detail(request, category_id=4)
+	return detail(request, category_slug='home')
 
-def detail(request, category_id):
-	category = Category.objects.get(pk=category_id)	
+def detail(request, category_slug):
+	category = Category.objects.get(slug=category_slug)	
 	categories = Category.objects.all().order_by('id')
 	indicators = Indicator.objects.filter(category=category).order_by('id').prefetch_related('question_set').order_by('id')
 
