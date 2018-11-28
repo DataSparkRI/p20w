@@ -14,7 +14,7 @@
 		<ul id='site_nav'>
 			{% for navcat in categories %}
 				<li{% if navcat.id == category.id %} class=current {% endif %}>
-					<a href='/{{ navcat.id }}'>{{ navcat.navigation_name }}</a>
+					<a href='/{{ navcat.slug }}'>{{ navcat.navigation_name }}</a>
 				</li>
 			{% endfor %}
 			<!-- li class=current><a href='/categories/1'>K-12 Education</a></li>
