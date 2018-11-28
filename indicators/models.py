@@ -4,9 +4,13 @@ from tinymce.models import HTMLField
 class Indicator(models.Model):
 	name = name = models.CharField(max_length=80, help_text='Indicator name. I.E. Early Indicators of Future Success.')
 	category = models.ForeignKey('categories.Category', on_delete=models.PROTECT)
+	sort_order = models.PositiveSmallIntegerField ()
 
 	def __str__(self):
 		return f'{self.category.name} - {self.name}'
+
+	class Meta:
+		ordering = ['sort_order']
 
 class Question(models.Model):
 	name = models.CharField(max_length=20, help_text='Reference for internal use only. Does not display.')
@@ -14,6 +18,7 @@ class Question(models.Model):
 	text = HTMLField(help_text='Explanatory text.')
 
 	indicator = models.ForeignKey('indicators.Indicator', on_delete=models.PROTECT)
+	sort_order = models.PositiveSmallIntegerField ()
 
 	dashboard_embed = models.TextField(help_text='Embed code from PowerBI')
 	aspect_ratio_width = models.PositiveSmallIntegerField(default=16, help_text='Defaults to 16x9')
@@ -27,7 +32,7 @@ class Question(models.Model):
 		return self.name
 
 	class Meta:
-		ordering = ['pk']
+		ordering = ['sort_order']
 
 	def get_category(self):
 		return self.indicator.category.name 
