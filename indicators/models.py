@@ -1,23 +1,12 @@
 from django.db import models
 from tinymce.models import HTMLField
 
-class Indicator(models.Model):
-	name = name = models.CharField(max_length=80, help_text='Indicator name. I.E. Early Indicators of Future Success.')
-	category = models.ForeignKey('categories.Category', on_delete=models.PROTECT)
-	sort_order = models.PositiveSmallIntegerField ()
-
-	def __str__(self):
-		return f'{self.category.name} - {self.name}'
-
-	class Meta:
-		ordering = ['sort_order']
-
 class Question(models.Model):
 	name = models.CharField(max_length=20, help_text='Reference for internal use only. Does not display.')
 	question = models.CharField(max_length=200, help_text='I.E. What career education programs are available to students?')
 	text = HTMLField(help_text='Explanatory text.')
 
-	indicator = models.ForeignKey('indicators.Indicator', on_delete=models.PROTECT)
+	category = models.ForeignKey('categories.Category', on_delete=models.PROTECT, null=True)
 	sort_order = models.PositiveSmallIntegerField ()
 
 	dashboard_embed = models.TextField(help_text='Embed code from PowerBI')
@@ -35,14 +24,4 @@ class Question(models.Model):
 		ordering = ['sort_order']
 
 	def get_category(self):
-		return self.indicator.category.name 
-
-	def get_indicator(self):
-		return self.indicator.name
-
-# TO DO
-# x help text
-# - sort_order
-# x Section instead of header?
-# - rich-text editor
-# - add indicators from category page?
+		return self.category.name 

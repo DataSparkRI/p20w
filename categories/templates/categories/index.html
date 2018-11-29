@@ -17,9 +17,6 @@
 					<a href='/{{ navcat.slug }}'>{{ navcat.navigation_name }}</a>
 				</li>
 			{% endfor %}
-			<!-- li class=current><a href='/categories/1'>K-12 Education</a></li>
-			<li><a href='/categories/2'>Higher Ed</a></li>
-			<li><a href='/categories/3'>Workforce</a></li-->
 		</ul>
 	</section>
 
@@ -31,37 +28,30 @@
 		<div class='text'>{{category.intro_text | safe}}</div>
 	</section>
 
-	{% if is_home or indicators %}
-		<section id=at_a_glance>
-			<h1>{{ at_a_glance_header }}</h2>
-			<div id=popstats>
-				{% for popstat in popstats %}
-				<a href={{ popstat.link }}>
-					<div class=popstat>
-						<span class=label>{{ popstat.label }}</span>
-						<span class=stat>{{ popstat.stat }}</span>
-						<span class=explainer>{{ popstat.explainer }}</span>
-					</div>
-				</a>
-				{% endfor %}
-			</div>
-		</section>
-	{% endif %}	
+	<section id=at_a_glance>
+		<h1>{{ at_a_glance_header }}</h2>
+		<div id=popstats>
+			{% for popstat in popstats %}
+			<a href={{ popstat.link }}>
+				<div class=popstat>
+					<span class=label>{{ popstat.label }}</span>
+					<span class=stat>{{ popstat.stat }}</span>
+					<span class=explainer>{{ popstat.explainer }}</span>
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+	</section>
 
-	{% if indicators %}
+	{% if questions %}
 		<section id=indicators>
-		{% for indicator in indicators %}
-			<div class=indicator>
-				<h1>{{indicator.name}}</h1>
-				{% if indicator.question_set %} 
-					{% for question in indicator.question_set.all %}
-						<h2><a id='q{{ question.id }}'></a>{{ question.question }}</h2>
+		{% for question in questions %}
+			<section class=indicator>
+				<h2><a id='q{{ question.id }}'></a>{{ question.question }}</h2>
 
-						<div class=text>{{ question.text | safe }}</div>
-						<div class=dashboard style='padding-bottom: calc({{ question.aspect_ratio_height|div:question.aspect_ratio_width|mul:100 }}% + 55px);'>{{ question.dashboard_embed | safe }}</div>
-					{% endfor %}
-				{% endif %}
-			</div>
+				<div class=text>{{ question.text | safe }}</div>
+				<div class=dashboard style='padding-bottom: calc({{ question.aspect_ratio_height|div:question.aspect_ratio_width|mul:100 }}% + 55px);'>{{ question.dashboard_embed | safe }}</div>
+			</section>
 		{% endfor %}
 		</section>
 	{% elif is_home %}
