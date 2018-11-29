@@ -6,7 +6,7 @@ class QuestionAdmin(admin.ModelAdmin):
 	list_display = ('name', 'question', 'get_indicator', 'get_category')
 	list_filter = ['indicator__category', 'indicator']
 	fieldsets = [
-		(None, 			{'fields': [('name', 'indicator'), 'question', 'text']}), 
+		(None, 			{'fields': [('name', 'indicator'), 'sort_order', 'question', 'text']}), 
 		('Dashboard', 	{'fields': ['dashboard_embed', ('aspect_ratio_width', 'aspect_ratio_height')]}), 
 		('Pop stat', 	{'fields': ['pop_stat', 'pop_stat_label', 'pop_stat_explainer']})
 		]
@@ -16,8 +16,9 @@ class QuestionInline(admin.StackedInline):
 	extra = 1
 
 class IndicatorAdmin(admin.ModelAdmin):
-	fields = ['category', 'name']
-	inlines = [QuestionInline] 
+	list_filter = ['category']
+	fields = ['category', 'name', 'sort_order']
+	# inlines = [QuestionInline] 
 
 
 admin.site.register(Indicator, IndicatorAdmin)
