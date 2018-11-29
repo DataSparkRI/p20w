@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'categories.apps.CategoriesConfig',
     'indicators.apps.IndicatorsConfig',
 
+    'adminsortable2',
     'mathfilters',
     'tinymce'
 ]

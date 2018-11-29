@@ -8,3 +8,4 @@ django-mathfilters >= 0.4.0
 django-tinymce >= 2.7.0
 Pillow
 gunicorn
+django-admin-sortable2

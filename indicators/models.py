@@ -6,8 +6,8 @@ class Question(models.Model):
 	question = models.CharField(max_length=200, help_text='I.E. What career education programs are available to students?')
 	text = HTMLField(help_text='Explanatory text.')
 
-	category = models.ForeignKey('categories.Category', on_delete=models.PROTECT, null=True)
-	sort_order = models.PositiveSmallIntegerField ()
+	category = models.ForeignKey('categories.Category', on_delete=models.PROTECT)
+	sort_order = models.PositiveSmallIntegerField(default=0)
 
 	dashboard_embed = models.TextField(help_text='Embed code from PowerBI')
 	aspect_ratio_width = models.PositiveSmallIntegerField(default=16, help_text='Defaults to 16x9')
@@ -18,7 +18,7 @@ class Question(models.Model):
 	pop_stat_explainer = models.CharField(max_length=60, help_text='Explainer under the pop-stat. 60 character max.')
 
 	def __str__(self):
-		return self.name
+		return f'{self.category.name} - {self.name}'
 
 	class Meta:
 		ordering = ['sort_order']

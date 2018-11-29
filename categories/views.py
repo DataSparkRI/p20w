@@ -8,7 +8,7 @@ def homepage(request):
 
 def detail(request, category_slug):
 	category = Category.objects.get(slug=category_slug)	
-	categories = Category.objects.all().order_by('id')
+	categories = Category.objects.all()
 	questions = Question.objects.filter(category=category)
 
 	popstats = []
