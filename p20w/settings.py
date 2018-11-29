@@ -125,3 +125,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': '50%',
     'height': 300
 }
+
+try:
+    from p20w.secret_setting import *
+except ImportError:
+    pass
