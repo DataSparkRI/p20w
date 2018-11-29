@@ -127,6 +127,6 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 try:
-    from p20w.secret_setting import *
+    from p20w.secret_settings import *
 except ImportError:
     pass
