@@ -121,7 +121,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': "simple", # default value
+    'theme': "advanced", # default value
     'relative_urls': False, # default value
     'width': '50%',
     'height': 300
