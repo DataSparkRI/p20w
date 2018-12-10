@@ -1,6 +1,6 @@
 from django.contrib import admin
 from adminsortable2.admin import SortableAdminMixin
-from .models import Question
+from .models import Indicator
 
 
 class QuestionAdmin(SortableAdminMixin, admin.ModelAdmin):
@@ -13,7 +13,7 @@ class QuestionAdmin(SortableAdminMixin, admin.ModelAdmin):
 		]
 
 class QuestionInline(admin.StackedInline):
-	model = Question
+	model = Indicator
 	extra = 1
 
-admin.site.register(Question, QuestionAdmin)
+admin.site.register(Indicator, QuestionAdmin)

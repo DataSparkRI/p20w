@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Category
-from indicators.models import Question
+from indicators.models import Indicator
 
 def homepage(request):
 	return detail(request, category_slug='home')
@@ -9,7 +9,7 @@ def homepage(request):
 def detail(request, category_slug):
 	category = Category.objects.get(slug=category_slug)	
 	categories = Category.objects.all()
-	questions = Question.objects.filter(category=category)
+	questions = Indicator.objects.filter(category=category)
 
 	popstats = []
 	if (category.name == 'Home'):

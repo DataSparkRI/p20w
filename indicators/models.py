@@ -1,7 +1,7 @@
 from django.db import models
 from tinymce.models import HTMLField
 
-class Question(models.Model):
+class Indicator(models.Model):
 	name = models.CharField(max_length=20, help_text='Reference for internal use only. Does not display.')
 	question = models.CharField(max_length=200, help_text='I.E. What career education programs are available to students?')
 	text = HTMLField(help_text='Explanatory text.')
