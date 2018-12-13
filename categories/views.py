@@ -10,6 +10,8 @@ def detail(request, category_slug):
 	category = Category.objects.get(slug=category_slug)	
 	categories = Category.objects.all()
 	questions = Indicator.objects.filter(category=category)
+	all_questions = Indicator.objects.all()
+
 
 	popstats = []
 	if (category.name == 'Home'):
@@ -35,27 +37,49 @@ def detail(request, category_slug):
 						'explainer': 'Served through Real Jobs RI (Sept 2018)',
 						'link': '/3'
 						})  			
-	else: 
+	else:
 		is_home = False
 		title_element = f'{category.name} | Rhode Island Skills & Jobs Dashboard'
 		header_text = category.name
 		at_a_glance_header = f'Rhode Island {category.at_a_glance_label} at a glance...'
 		for q in questions:
 			popstats.append({
-						'label': q.pop_stat_label,
-						'stat': q.pop_stat,
-						'explainer': q.pop_stat_explainer,
-						'link': f'#q{q.id}'				
-					})
+                               'label': q.pop_stat_label,
+                               'stat': q.pop_stat,
+                               'explainer': q.pop_stat_explainer,
+                               'link': f'../deep-dive/#q{q.id}'
+                           })
 	context = {
 				'category': category,
 				'categories': categories,
 				'questions': questions,
+				'all_questions': all_questions,
 				'popstats': popstats,
-
 				'is_home': is_home,
 				'title_element': title_element,
 				'header_text': header_text,
 				'at_a_glance_header': at_a_glance_header
 				}
+
 	return render(request, 'categories/index.html', context)
+
+def deep_dive(request):
+	category = Category.objects.get(slug='deep-dive')	
+	categories = Category.objects.all()
+	all_questions = Indicator.objects.all()
+
+	is_home = False
+	title_element = 'Deep Dive | Rhode Island Skills & Jobs Dashboard'
+	header_text = 'Deep Dive into Data'
+	
+	context = {
+				'category': category,
+				'categories': categories,
+				'all_questions': all_questions,
+				'is_home': is_home,
+				'title_element': title_element,
+				'header_text': header_text
+				}
+
+	return render(request, 'categories/deep_dive.html', context)
+	
