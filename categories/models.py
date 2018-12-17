@@ -11,6 +11,7 @@ class Category(models.Model):
 	intro_header = models.CharField(max_length=200)
 	intro_text = HTMLField()
 	at_a_glance_label = models.CharField(max_length=30, help_text='Rhode Island ??? at a glance')
+	agency_url = models.URLField(max_length=100,null=True,blank=True,help_text='Agency URL')
 	sort_order = models.PositiveSmallIntegerField(default=0)
 
 	def save(self, *args, **kwargs):

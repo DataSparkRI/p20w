@@ -6,11 +6,13 @@
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900|Open+Sans" />
 	<link rel="stylesheet" type="text/css" href="{% static 'categories/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'categories/dropdown.css' %}">
 </head>
 
 <body id={% if is_home %}homepage{% else %}nothomepage{% endif %}>
 	<section id='site_header'>
 		<div id='site_title'><a href='/'>RI Skills & Jobs</a></div>
+	<!--
 		<ul id='site_nav'>
 			{% for navcat in categories %}
 				<li{% if navcat.id == category.id %} class=current {% endif %}>
@@ -18,7 +20,28 @@
 				</li>
 			{% endfor %}
 		</ul>
+	-->
+		<div class="navbar" id="site_nav">
+		  
+			{% for navcat in categories %}
+				
+				{% if navcat.navigation_name != 'Home' and navcat.navigation_name != 'Deep Dive' %}
+					<div class="dropdown">
+					    <button class="dropbtn" onclick="window.open('../{{ navcat.slug }}',target='_self')">{{ navcat.navigation_name }}</button>
+					    <div class="dropdown-content">
+					      <a href="../{{ navcat.slug }}">Overview</a>
+					      <a href="../deep-dive/">Deep Dive</a>
+					      <a href='{{ navcat.agency_url }}' target="_blank">Agency Home</a>
+					    </div>
+					</div>
+				{% else %}
+					<a href='/{{ navcat.slug }}'>{{ navcat.navigation_name }}</a>
+				{% endif %}
+			{% endfor %}
+
+		</div>
 	</section>
+
 
 	<section id='page_header' style='background-image: url({{ category.category_page_image.url }}); background-position-y: {{category.category_page_image_offset }}%;'><h1>{{ header_text }}</h1></section>
 
@@ -43,21 +66,7 @@
 		</div>
 	</section>
 
-	{% if questions %}
-	
-<!--
-		<section id=indicators>
-		{% for question in questions %}
-			<section class=indicator>
-				<h2><a id='q{{ question.id }}'></a>{{ question.question }}</h2>
-
-				<div class=text>{{ question.text | safe }}</div>
-				<div class=dashboard style='padding-bottom: calc({{ question.aspect_ratio_height|div:question.aspect_ratio_width|mul:100 }}% + 55px);'>{{ question.dashboard_embed | safe }}</div>
-			</section>
-		{% endfor %}
-		</section>
--->
-	{% elif is_home %}
+	{% if is_home %}
 		<section id=homepage_belowfold>		
 			<h1 style="color: dimgray">How it works</h1>
 			<p class=text style='font-size: 1.1em;'>If we start with asking how to meet growing industry’s need, Rhode Island will become more attractive to neighboring companies, boost existing RI companies, and turn up the economic engine to generate more jobs for all Rhode Islanders.</p>
