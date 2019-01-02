@@ -63,14 +63,16 @@ def detail(request, category_slug):
 
 	return render(request, 'categories/index.html', context)
 
-def deep_dive(request):
-	category = Category.objects.get(slug='deep-dive')	
+def deep_dive(request, category_slug):
+	
+	category = Category.objects.get(slug=category_slug)
+#	category = Category.objects.get(slug='deep-dive')	
 	categories = Category.objects.all()
-	all_questions = Indicator.objects.all()
+	all_questions = Indicator.objects.filter(category=category)
 
 	is_home = False
 	title_element = 'Deep Dive | Rhode Island Skills & Jobs Dashboard'
-	header_text = 'Deep Dive into Data'
+	header_text = category.name + ' - Deep Dive into Data'
 	
 	context = {
 				'category': category,

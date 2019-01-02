@@ -30,11 +30,11 @@
 					    <button class="dropbtn" onclick="window.open('../{{ navcat.slug }}',target='_self')">{{ navcat.navigation_name }}</button>
 					    <div class="dropdown-content">
 					      <a href="../{{ navcat.slug }}">Overview</a>
-					      <a href="../deep-dive/">Deep Dive</a>
+					      <a href="../deep-dive/{{ navcat.slug }}">Deep Dive</a>
 					      <a href='{{ navcat.agency_url }}' target="_blank">Agency Home</a>
 					    </div>
 					</div>
-				{% else %}
+				{% elif navcat.navigation_name != 'Deep Dive'  %}
 					<a href='/{{ navcat.slug }}'>{{ navcat.navigation_name }}</a>
 				{% endif %}
 			{% endfor %}
