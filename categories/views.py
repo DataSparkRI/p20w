@@ -23,19 +23,19 @@ def detail(request, category_slug):
 						'label': 'K-12 Education',
 						'stat': '83%',
 						'explainer': 'of students graduate high school in 4 years (2016)',
-						'link': '/1'
+						'link': '/k-12-education'
 						}) 
 		popstats.append({
 						'label': 'Higher Ed',
 						'stat': '47%',
 						'explainer': 'of working-age RIers hold a postsecondary degree or credential',
-						'link': '/2'
+						'link': '/higher-education'
 						}) 
 		popstats.append({
 						'label': 'Workforce',
 						'stat': '3700+',
 						'explainer': 'Served through Real Jobs RI (Sept 2018)',
-						'link': '/3'
+						'link': '/workforce'
 						})  			
 	else:
 		is_home = False
@@ -47,7 +47,7 @@ def detail(request, category_slug):
                                'label': q.pop_stat_label,
                                'stat': q.pop_stat,
                                'explainer': q.pop_stat_explainer,
-                               'link': f'../deep-dive/#q{q.id}'
+                               'link': f'../deep-dive/{category_slug}/#q{q.id}'
                            })
 	context = {
 				'category': category,
