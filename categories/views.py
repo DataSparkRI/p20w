@@ -47,10 +47,12 @@ def detail(request, category_slug):
                                'label': q.pop_stat_label,
                                'stat': q.pop_stat,
                                'explainer': q.pop_stat_explainer,
-                               'link': f'../deep-dive/{category_slug}/#q{q.id}'
+                            #   'link': f'../deep-dive/{category_slug}/#q{q.id}'
+                               'link': f'#q{q.id}'
                            })
 	context = {
 				'category': category,
+                                'category_slug': category_slug,
 				'categories': categories,
 				'questions': questions,
 				'all_questions': all_questions,
