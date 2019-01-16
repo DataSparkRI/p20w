@@ -58,7 +58,8 @@ def detail(request, category_slug):
 				'is_home': is_home,
 				'title_element': title_element,
 				'header_text': header_text,
-				'at_a_glance_header': at_a_glance_header
+				'at_a_glance_header': at_a_glance_header, 
+				'color_css': f'categories/{category_slug}_color.css',
 				}
 
 	return render(request, 'categories/index.html', context)
