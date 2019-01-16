@@ -1,0 +1,73 @@
+#page_intro h1,
+#popstats .popstat .stat,
+#indicators .indicator h2 {
+	color: #351c4d;
+}
+
+#site_header, #homepage #site_header,
+#at_a_glance,
+#popstats .popstat .label,
+#popstats .popstat:hover,
+#site_footer,
+#site_nav, #site_nav a,
+.dropdown-content,
+.dropbtn {
+	background-color: #351c4d;
+}
+
+/*=========================================================*/
+#site_nav li a,
+#popstats .popstat .explainer {
+	color: #765285;
+}
+
+#popstats .popstat:hover .label,
+#site_nav a:hover, .dropdown:hover .dropbtn,
+.dropdown-content a:hover  {
+	background-color: #765285;
+}
+
+#page_intro h1,
+#site_nav li.current,
+#popstats .popstat {
+	border-color: #765285;
+}
+
+/*=========================================================*/
+#site_header, #homepage #site_header,
+#site_title ,
+#site_nav li:hover a,
+#at_a_glance h1,
+#popstats .popstat .label,
+#popstats .popstat:hover .label,
+#popstats .popstat:hover .stat,
+a.navbar,
+.dropdown .dropbtn  {
+	color: white;
+}
+
+#popstats .popstat {
+	background-color: white;
+}
+
+#site_nav li:hover {
+	border-color: white;
+}
+
+
+/*=========================================================*/
+#popstats .popstat:hover .explainer {
+	color: gainsboro;
+}
+
+#indicators .indicator h1 {
+	color: silver;
+}
+
+#homepage_belowfold H1 {
+	color: dimgray;
+}
+
+#site_footer {
+	color: #EFEFEF;
+}
