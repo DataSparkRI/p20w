@@ -7,8 +7,8 @@ class QuestionAdmin(SortableAdminMixin, admin.ModelAdmin):
 	list_display = ('name', 'question', 'get_category')
 	list_filter = ['category']
 	fieldsets = [
-		(None, 			{'fields': [('name', 'category'), 'question', 'text']}), 
-		('Dashboard', 	{'fields': ['dashboard_embed', ('aspect_ratio_width', 'aspect_ratio_height')]}), 
+		(None, 			{'fields': [('name', 'category'), 'question', 'text','desc_text']}), 
+		('Dashboard', 	{'fields': ['dashboard_embed', ('aspect_ratio_width', 'aspect_ratio_height'), 'info_graphic']}), 
 		('Pop stat', 	{'fields': ['pop_stat', 'pop_stat_label', 'pop_stat_explainer']})
 		]
 
