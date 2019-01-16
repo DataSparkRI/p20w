@@ -28,7 +28,7 @@
 			{% for navcat in categories %}
 				
 				{% if navcat.navigation_name != 'Home' and navcat.navigation_name != 'Deep Dive' %}
-					<div class="dropdown">
+					<div class="dropdown {{ navcat.slug }}">
 					    <button class="dropbtn" onclick="window.open('../{{ navcat.slug }}',target='_self')">{{ navcat.navigation_name }}
 						&nbsp;  <i class="fas fa-chevron-down"></i></button>
 					    <div class="dropdown-content">

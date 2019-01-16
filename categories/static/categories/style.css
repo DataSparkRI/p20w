@@ -4,18 +4,18 @@ BODY {
 }
 
 section {
-	padding: 10em 20%;
+	padding: 10em 10%;
 }
 #homepage section {
-	padding: 5em 20%;
+	padding: 5em 10%;
 }
 
 /* set these to twice the section padding% */
 #indicators .indicator:nth-child(even) {
-	margin-left: -40%;
-	margin-right: -40%;
-	padding-left: 40%;
-	padding-right: 40%;
+	margin-left: -20%;
+	margin-right: -20%;
+	padding-left: 20%;
+	padding-right: 20%;
 }
 
 #site_title, #site_nav, h1, h2, h3, .popstat {
@@ -32,7 +32,7 @@ section {
 #homepage #site_header {
 	background-color: steelblue;
 	color: white;
-	padding: 0.3em 0.3em 0em 0.3em;
+	padding: 0em 0.3em;
 
 	display: flex;
 	flex-direction: row;

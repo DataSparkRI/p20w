@@ -4,14 +4,9 @@
 	color: orange;
 }
 
-#site_header, #homepage #site_header,
 #at_a_glance,
 #popstats .popstat .label,
-#popstats .popstat:hover,
-#site_footer,
-#site_nav, #site_nav a,
-.dropdown-content,
-.dropbtn {
+#popstats .popstat:hover {
 	background-color: orange;
 }
 
@@ -27,47 +22,40 @@
 	background-color: moccasin;
 }
 
-#page_intro h1,
 #site_nav li.current,
 #popstats .popstat {
 	border-color: moccasin;
 }
 
 /*=========================================================*/
-#site_header, #homepage #site_header,
-#site_title ,
-#site_nav li:hover a,
-#at_a_glance h1,
-#popstats .popstat .label,
-#popstats .popstat:hover .label,
-#popstats .popstat:hover .stat,
-a.navbar,
-.dropdown .dropbtn  {
-	color: white;
+#page_intro h1 {
+	border-color: #FFEEDD;
 }
-
-#popstats .popstat {
-	background-color: white;
-}
-
-#site_nav li:hover {
-	border-color: white;
-}
-
 
 /*=========================================================*/
-#popstats .popstat:hover .explainer {
-	color: gainsboro;
+#site_nav .dropdown.k-12-education,
+#site_nav .dropdown.k-12-education .dropdown-content a {
+	background-color: crimson;
+}
+#site_nav .dropdown.k-12-education:hover .dropbtn,
+#site_nav .dropdown.k-12-education .dropdown-content a:hover {
+	background-color: lightcoral;
 }
 
-#indicators .indicator h1 {
-	color: silver;
+#site_nav .dropdown.higher-education,
+#site_nav .dropdown.higher-education .dropdown-content a {
+	background-color: #351c4d;
+}
+#site_nav .dropdown.higher-education:hover .dropbtn,
+#site_nav .dropdown.higher-education .dropdown-content a:hover {
+	background-color: #765285;
 }
 
-#homepage_belowfold H1 {
-	color: dimgray;
+#site_nav .dropdown.workforce,
+#site_nav .dropdown.workforce .dropdown-content a {
+	background-color: orange;
 }
-
-#site_footer {
-	color: #EFEFEF;
+#site_nav .dropdown.workforce:hover .dropbtn,
+#site_nav .dropdown.workforce .dropdown-content a:hover {
+	background-color: moccasin;
 }
