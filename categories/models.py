@@ -9,11 +9,14 @@ class Category(models.Model):
 	category_page_image = models.ImageField(upload_to='category_headers')
 	category_page_image_offset = models.IntegerField(default=50, help_text='Percent from top to offset the header image.')
 	intro_header = models.CharField(max_length=200)
-	intro_text = HTMLField()
-	desc_text = HTMLField(null=True, blank=True)
+	description = HTMLField()
+	narrative_text = HTMLField(null=True, blank=True)
 	at_a_glance_label = models.CharField(max_length=30, help_text='Rhode Island ??? at a glance')
 	agency_url = models.URLField(max_length=100,null=True,blank=True,help_text='Agency URL')
 	sort_order = models.PositiveSmallIntegerField(default=0)
+	color = models.CharField(max_length=20, default='steelblue')
+	color_light = models.CharField(max_length=20, default='lightsteelblue')
+	color_lightest = models.CharField(max_length=20, default='#DDDDEE')
 
 	def save(self, *args, **kwargs):
 		if self.slug == None:

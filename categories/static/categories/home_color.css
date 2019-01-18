@@ -11,21 +11,24 @@
 }
 
 /*=========================================================*/
-#site_nav li a,
 #popstats .popstat .explainer {
 	color: lightsteelblue;
 }
 
-#popstats .popstat:hover .label,
-#site_nav a:hover, .dropdown:hover .dropbtn,
-.dropdown-content a:hover  {
+#popstats .popstat:hover .label {
 	background-color: lightsteelblue;
 }
 
-#page_intro h1,
+
 #site_nav li.current,
 #popstats .popstat {
 	border-color: lightsteelblue;
+}
+
+
+/*=========================================================*/
+#page_intro h1 {
+	border-color: #DDDDEE;
 }
 
 /*=========================================================*/

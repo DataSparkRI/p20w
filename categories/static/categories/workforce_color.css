@@ -11,18 +11,14 @@
 }
 
 /*=========================================================*/
-#site_nav li a,
 #popstats .popstat .explainer {
 	color: moccasin;
 }
 
-#popstats .popstat:hover .label,
-#site_nav a:hover, .dropdown:hover .dropbtn,
-.dropdown-content a:hover  {
+#popstats .popstat:hover .label {
 	background-color: moccasin;
 }
 
-#site_nav li.current,
 #popstats .popstat {
 	border-color: moccasin;
 }

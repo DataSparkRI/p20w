@@ -4,10 +4,7 @@ BODY {
 }
 
 section {
-	padding: 10em 10%;
-}
-#homepage section {
-	padding: 5em 10%;
+	padding: 3em 10%;
 }
 
 /* set these to twice the section padding% */
@@ -28,8 +25,7 @@ section {
 	color: dimgray;
 }
 
-#site_header, 
-#homepage #site_header {
+#site_header {
 	background-color: steelblue;
 	color: white;
 	padding: 0em 0.3em;
@@ -85,8 +81,7 @@ section {
 	color: white;
 }
 
-#page_header,
-#homepage #page_header {
+#page_header {
 	background-color: black;
 	/* background-position-y: 50%; */
 	background-repeat: no-repeat;
@@ -101,8 +96,7 @@ section {
 	font-weight: 800;
 }
 
-#page_intro,
-#homepage #page_intro {
+#page_intro {
 	padding-top: 0;
 }
 
@@ -122,6 +116,10 @@ section {
 #page_intro .text {
 	font-size: 1.4em;
 	line-height: 200%;
+}
+
+.deepdive #page_intro {
+	padding-bottom: 0em;
 }
 
 #at_a_glance {
@@ -270,10 +268,64 @@ section {
 
 
 #site_footer {
+	padding-bottom: 3em;
+	padding-top: 6em;
 	background-color: steelblue;
-	color: #EFEFEF;
-	font-size: 0.8em;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#footertext, #footertext a {
+	color: white;
+}
+
+#footertext {
+	color: white;
+	font-size: 0.7em;
+	text-align: right;
 	font-weight: 300;
-	min-height: 5em;
-	padding: 5px;
+	padding: 0em 1.5em;
+	white-space: nowrap;
+}
+
+#partnerlogos {
+	opacity: 0.7;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	justify-content: space-between;
+	align-items: center;
+}
+
+#partnerlogos div {
+	margin: 0em 1em;
+}
+
+#partnerlogos div.dlt {
+	flex-basis: 24.19%;
+}
+
+#partnerlogos div.gwb {
+	flex-basis: 30.54%;
+}
+
+#partnerlogos div.opc {
+	flex-basis: 13.22%;
+}
+
+#partnerlogos div.ride {
+	flex-basis: 20.93%;
+}
+
+#partnerlogos div.dataspark {
+	flex-basis: 11.12%;
+}
+
+#partnerlogos div img {
+	background-color: white;
+	border: 1px solid lightsteelblue;
+	padding: 2px;
+	width: 100%;
 }

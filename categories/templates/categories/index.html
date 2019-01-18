@@ -7,33 +7,64 @@
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900|Open+Sans" />
 	<link rel="stylesheet" type="text/css" href="{% static 'categories/style.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'categories/dropdown.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static color_css %}">
    	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+   	<style type="text/css">
+		#page_intro h1,
+		#popstats .popstat .stat,
+		#indicators .indicator h2 {
+			color: {{ category.color }};
+		}
+
+		#at_a_glance,
+		#popstats .popstat .label,
+		#popstats .popstat:hover {
+			background-color: {{ category.color }}
+		}
+
+		#popstats .popstat .explainer {
+			color: {{ category.color_light }};
+		}
+
+		#popstats .popstat:hover .label {
+			background-color: {{ category.color_light }};
+		}
+
+		#popstats .popstat {
+			border-color: {{ category.color_light }};
+		}
+
+		#page_intro h1 {
+			border-color: {{ category.color_lightest }};
+		}
+
+		{% for navcat in categories %}
+			#site_nav .dropdown.{{ navcat.slug }},
+			#site_nav .dropdown.{{ navcat.slug }} .dropdown-content a {
+				background-color: {{ navcat.color }};
+			}
+
+			#site_nav .dropdown.{{ navcat.slug }}:hover .dropbtn,
+			#site_nav .dropdown.{{ navcat.slug }} .dropdown-content a:hover {
+				background-color: {{ navcat.color_light }};
+			}
+		{% endfor %}
+
+   </style>
 </head>
 
-<body id={% if is_home %}homepage{% else %}nothomepage{% endif %}>
+<body class={{ page_type }}>
+	{# NAVIGATION #}
 	<section id='site_header'>
 		<div id='site_title'><a href='/'>RI Skills & Jobs</a></div>
-	<!--
-		<ul id='site_nav'>
-			{% for navcat in categories %}
-				<li{% if navcat.id == category.id %} class=current {% endif %}>
-					<a href='/{{ navcat.slug }}'>{{ navcat.navigation_name }}</a>
-				</li>
-			{% endfor %}
-		</ul>
-	-->
 		<div class="navbar" id="site_nav">
-		  
 			{% for navcat in categories %}
-				
-				{% if navcat.navigation_name != 'Home' and navcat.navigation_name != 'Deep Dive' %}
+				{% if navcat.navigation_name != 'Home' %}
 					<div class="dropdown {{ navcat.slug }}">
-					    <button class="dropbtn" onclick="window.open('../{{ navcat.slug }}',target='_self')">{{ navcat.navigation_name }}
+					    <button class="dropbtn" onclick="window.open('/{{ navcat.slug }}',target='_self')">{{ navcat.navigation_name }}
 						&nbsp;  <i class="fas fa-chevron-down"></i></button>
 					    <div class="dropdown-content">
-					      <a href="../{{ navcat.slug }}">Overview</a>
-					      <a href="../deep-dive/{{ navcat.slug }}">Deep Dive</a>
+					      <a href="/{{ navcat.slug }}">Overview</a>
+					      <a href="/deep-dive/{{ navcat.slug }}">Deep Dive</a>
 					      <a href='{{ navcat.agency_url }}' target="_blank">Agency Home</a>
 					    </div>
 					</div>
@@ -41,78 +72,85 @@
 					<a href='/{{ navcat.slug }}'>{{ navcat.navigation_name }}</a>
 				{% endif %}
 			{% endfor %}
-
 		</div>
 	</section>
 
-
+	{# PAGE HEADER AND PHOTO #}
 	<section id='page_header' style='background-image: url({{ category.category_page_image.url }}); background-position-y: {{category.category_page_image_offset }}%;'><h1>{{ header_text }}</h1></section>
 
 
+	{# PAGE INTRO #}
 	<section id='page_intro'>
 		<h1>{{category.intro_header}}</h1>
-		<div class='text'>{{category.intro_text | safe}}</div>
+		{% if page_type == 'home' or page_type == 'category'  %}
+			<div class='text'>{{category.description | safe}}</div>
+		{% endif %}
 	</section>
 
-	<section id=at_a_glance>
-		<h1>{{ at_a_glance_header }}</h2>
-		<div id=popstats>
-			{% for popstat in popstats %}
-			<a href={{ popstat.link }}>
-				<div class=popstat>
-					<span class=label>{{ popstat.label }}</span>
-					<span class=stat>{{ popstat.stat }}</span>
-					<span class=explainer>{{ popstat.explainer }}</span>
-				</div>
-			</a>
-			{% endfor %}
-		</div>
-	</section>
 
-	{% if questions %}
+	{# AT A GLANCE #}
+	{% if page_type == 'home' or page_type == 'category' %}
+		<section id=at_a_glance>
+			<h1>{{ at_a_glance_header }}</h2>
+			<div id=popstats>
+				{% for popstat in popstats %}
+				<a href={{ popstat.link }}>
+					<div class=popstat>
+						<span class=label>{{ popstat.label }}</span>
+						<span class=stat>{{ popstat.stat }}</span>
+						<span class=explainer>{{ popstat.explainer }}</span>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
+
+	{# BELOW AT-A-GLANCE #}
+	{% if page_type == 'home' or page_type == 'category'%}
+		<section class='text'>{{ category.narrative_text | safe }}</section>
+	{% endif %}
+
+	{# INDICATORS #}
+	{% if page_type == 'category' and indicators %}	
 		<section id=indicators>
-		{% for question in questions %}
-			<section class=indicator>
-				<h2><a id='q{{ question.id }}'></a>{{ question.question }}</h2>
+			{% for indicator in indicators %}
+				<section class=indicator>
+					<h2><a id='q{{ indicator.id }}'></a>{{ indicator.question }}</h2>
+					<div class=text>{{ indicator.desc_text | safe }}</div>
+					{% if indicator.info_graphic  %}
+					 	<div><img src="/media/{{ indicator.info_graphic }}"></div>
+					{% endif %}
+	                <div class=text><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>View interactive data here</a> </div>
+				</section>
+			{% endfor %}
+		</section>
 
-				<div class=text>{{ question.desc_text | safe }}</div>
-				<!--<div class=dashboard style='padding-bottom: calc({{ question.aspect_ratio_height|div:question.aspect_ratio_width|mul:100 }}% + 55px);'>{{ question.dashboard_embed | safe }}</div>  -->
-				
-				{% if question.info_graphic  %}
-				  <div><img src="/media/{{ question.info_graphic }}">  </div>
-				{% endif %}
-                                <div class=text><a href='../deep-dive/{{category_slug}}/#q{{ question.id  }}'>View interactive data here</a> </div>
+	{% elif page_type == 'deepdive' and indicators %}
+		<section id=indicators>
+		{% for indicator in indicators %}
+			<section class=indicator>
+				<h2><a id='q{{ indicator.id }}'></a>{{ indicator.question }}</h2>
+				<div class=text>{{ indicator.text | safe }}</div>
+				<div class=dashboard style='padding-bottom: calc({{ indicator.aspect_ratio_height|div:indicator.aspect_ratio_width|mul:100 }}% + 55px);'>{{ indicator.dashboard_embed | safe }}</div>
 			</section>
 		{% endfor %}
 		</section>
-	
-	{% elif is_home %}
-		<section id=homepage_belowfold>		
-			<h1 style="color: dimgray">How it works</h1>
-			<p class=text style='font-size: 1.1em;'>If we start with asking how to meet growing industry’s need, Rhode Island will become more attractive to neighboring companies, boost existing RI companies, and turn up the economic engine to generate more jobs for all Rhode Islanders.</p>
 
-			<div id=popstats>
-				<div class=popstat>
-					<span class=label>Unemployment</span>
-					<span class=stat>4%</span>
-					<span class=explainer></span>
-				</div>
-
-				<div class=popstat>
-					<span class=label>Employed</span>
-					<span class=stat>532K</span>
-					<span class=explainer></span>
-				</div>
-
-				<div class=popstat>
-					<span class=label>Employers</span>
-					<span class=stat>37.5K</span>
-					<span class=explainer></span>
-				</div>
-		</section>
-	{% else %}
-		<p>No indicators to show in this category.</p>
+	{% elif page_type == 'category' or page_type == 'deepdive' %}
+		<section><p>{{ page_type }} No indicators to show in this category.</p></section>
 	{% endif %}
 
-	<section id='site_footer'>Footer stuff goes here</section>
+	<section id='site_footer'>
+		<div id='footertext'>
+			Department of Labor and Training | 1511 Pontiac Ave, Cranston, RI 02920 | <a href=mailto:dlt.gwbinfo@dlt.ri.gov>dlt.gwbinfo@dlt.ri.gov</a>
+		</div>
+		<div id='partnerlogos'>
+			<div class='dlt'><img src='{{MEDIA_URL}}/footer_logos/DLT_logo.svg'></div>
+			<div class='gwb'><img src='{{MEDIA_URL}}/footer_logos/GWB_logo.svg'></div>
+			<div class='opc'><img src='{{MEDIA_URL}}/footer_logos/OPC_logo.svg'></div>
+			<div class='ride'><img src='{{MEDIA_URL}}/footer_logos/RIDE_logo.svg'></div>
+			<div class='dataspark'><img src='{{MEDIA_URL}}/footer_logos/DataSpark_logo.svg'></div>
+		</div>		
+	</section>
 </body>
