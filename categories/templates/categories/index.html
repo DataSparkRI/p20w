@@ -4,7 +4,7 @@
 	<title>{{ title_element }}</title>
 
 	{% load static %}
-	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900|Open+Sans" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900|Open+Sans" />
 	<link rel="stylesheet" type="text/css" href="{% static 'categories/style.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'categories/dropdown.css' %}">
    	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -98,7 +98,9 @@
 					<div class=popstat>
 						<span class=label>{{ popstat.label }}</span>
 						<span class=stat>{{ popstat.stat }}</span>
+
 						<span class=explainer>{{ popstat.explainer }}</span>
+						{% if page_type == 'home' %}<span class=hovercontent><i class="fas {{ popstat.icon }} fa-6x"></i><div class=button>Explore the data</div></span>{% endif %}
 					</div>
 				</a>
 				{% endfor %}
@@ -141,16 +143,16 @@
 		<section><p>{{ page_type }} No indicators to show in this category.</p></section>
 	{% endif %}
 
-	<section id='site_footer'>
-		<div id='footertext'>
-			Department of Labor and Training | 1511 Pontiac Ave, Cranston, RI 02920 | <a href=mailto:dlt.gwbinfo@dlt.ri.gov>dlt.gwbinfo@dlt.ri.gov</a>
-		</div>
+	<section id='site_footer'>		
 		<div id='partnerlogos'>
 			<div class='dlt'><img src="{% static 'categories/images/footer_logos/DLT_logo.svg' %}"></div>
 			<div class='gwb'><img src="{% static 'categories/images/footer_logos/GWB_logo.svg' %}"></div>
 			<div class='opc'><img src="{% static 'categories/images/footer_logos/OPC_logo.svg' %}"></div>
 			<div class='ride'><img src="{% static 'categories/images/footer_logos/RIDE_logo.svg' %}"></div>
 			<div class='dataspark'><img src="{% static 'categories/images/footer_logos/DataSpark_logo.svg' %}"></div>
-		</div>		
+		</div>
+		<div id='footertext'>
+			Department of Labor and Training | 1511 Pontiac Ave, Cranston, RI 02920 | <a href=mailto:dlt.gwbinfo@dlt.ri.gov>dlt.gwbinfo@dlt.ri.gov</a>
+		</div>
 	</section>
 </body>
