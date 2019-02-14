@@ -28,19 +28,22 @@ def page(request, category_slug, page_type):
 						'label': 'K-12 Education',
 						'stat': '83%',
 						'explainer': 'of students graduate high school in 4 years (2016)',
-						'link': '/k-12-education'
+						'link': '/k-12-education',
+						'icon': 'fa-school'
 						}) 
 		popstats.append({
 						'label': 'Higher Ed',
 						'stat': '47%',
 						'explainer': 'of working-age RIers hold a postsecondary degree or credential',
-						'link': '/higher-education'
+						'link': '/higher-education',
+						'icon': 'fa-graduation-cap'
 						}) 
 		popstats.append({
 						'label': 'Workforce',
 						'stat': '3700+',
 						'explainer': 'Served through Real Jobs RI (Sept 2018)',
-						'link': '/workforce'
+						'link': '/workforce',
+						'icon': 'fa-cogs'
 						})  			
 	elif (page_type == 'category'):
 		title_element = f'{category.name} | Rhode Island Skills & Jobs Dashboard'
