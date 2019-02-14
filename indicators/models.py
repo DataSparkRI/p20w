@@ -6,7 +6,7 @@ class Indicator(models.Model):
 	question = models.CharField(max_length=200, help_text='I.E. What career education programs are available to students?')
 	text = HTMLField(help_text='Explanatory text.')
 	desc_text = HTMLField(null=True, blank=True)
-	info_graphic =  models.ImageField(upload_to='category_headers',null=True, blank=True)
+	info_graphic =  models.FileField(upload_to='infographics',null=True, blank=True)
 
 	category = models.ForeignKey('categories.Category', on_delete=models.PROTECT)
 	sort_order = models.PositiveSmallIntegerField(default=0)
