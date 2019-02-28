@@ -1,5 +1,5 @@
 {% load mathfilters %}
-<html>
+<html lang='en'>
 <head>
 	<title>{{ title_element }}</title>
 
@@ -46,6 +46,39 @@
 			#site_nav .dropdown.{{ navcat.slug }}:hover .dropbtn,
 			#site_nav .dropdown.{{ navcat.slug }} .dropdown-content a:hover {
 				background-color: {{ navcat.color_light }};
+			}
+		{% endfor %}
+		
+		{% for hp_popstat_color in hp_popstat_colors %}
+			BODY.home #popstats .popstat.{{ hp_popstat_color.class }} .stat {
+				color: {{ hp_popstat_color.color }}
+			}
+		
+			BODY.home #popstats .popstat.{{ hp_popstat_color.class }} .label,
+			#popstats .{{ hp_popstat_color.class }}:hover {
+				background: {{ hp_popstat_color.color }};
+			}		
+
+			BODY.home #popstats .popstat.{{ hp_popstat_color.class }} .explainer {
+				color: {{ hp_popstat_color.color_light }};
+			}			
+	
+			BODY.home #popstats .popstat.{{ hp_popstat_color.class }}:hover .label {
+				background-color: {{ hp_popstat_color.color_light }};
+			}
+			
+			BODY.home #popstats .popstat.{{ hp_popstat_color.class }} {
+				border-color: {{ hp_popstat_color.color_light }};
+			}
+			
+			BODY.home #popstats .popstat.{{ hp_popstat_color.class }}:hover .hovercontent .button {
+				border-color: {{ hp_popstat_color.color_light }};
+				color:  {{ hp_popstat_color.color }};
+			}
+			
+			BODY.home #popstats .popstat.{{ hp_popstat_color.class }}:hover .hovercontent .button:hover {
+				background: {{ hp_popstat_color.color }};
+				color: white;
 			}
 		{% endfor %}
 
@@ -95,7 +128,7 @@
 			<div id=popstats>
 				{% for popstat in popstats %}
 				<a href={{ popstat.link }}>
-					<div class=popstat>
+					<div class='popstat {{ popstat.class }}'>
 						<span class=label>{{ popstat.label }}</span>
 						<span class=stat>{{ popstat.stat }}</span>
 

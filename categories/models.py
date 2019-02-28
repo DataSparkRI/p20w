@@ -18,6 +18,10 @@ class Category(models.Model):
 	color_light = models.CharField(max_length=20, default='lightsteelblue')
 	color_lightest = models.CharField(max_length=20, default='#DDDDEE')
 
+	homepage_pop_stat = models.CharField(max_length=5, blank=True, null=True, help_text='Number that displays in the pop-stat at the top of the screen. Include %$ etc. 5 character max')
+	homepage_pop_stat_explainer = models.CharField(max_length=60, blank=True, null=True, help_text='Explainer under the pop-stat. 60 character max.')
+	homepage_pop_stat_icon = models.CharField(max_length=20, blank=True, null=True, help_text='Icon class from fontawesome for the icon that appears when you hover over the popstat. ')
+
 	def save(self, *args, **kwargs):
 		if self.slug == None:
 		   self.slug = slugify(self.name)

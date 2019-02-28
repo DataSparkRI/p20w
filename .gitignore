@@ -4,6 +4,6 @@ p20w/secret_settings.py
 __pycache__/
 OUTPUT
 dbdump.json
-migrations/*
+*/migrations/*
 staticfiles/*
 

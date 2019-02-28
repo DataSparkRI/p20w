@@ -127,6 +127,7 @@ section {
 
 #at_a_glance h1 {
 	color: white;
+	font-size: 2em;
 	font-weight: 700;
 	letter-spacing: 0.05em;
 	margin-top: 0em;
@@ -209,13 +210,13 @@ section {
 	display: none;
 }
 
+
 BODY.home #popstats .popstat:hover .stat,
 BODY.home #popstats .popstat:hover .explainer {
 	display: none;
 }
 
 BODY.home #popstats .popstat:hover {
-	background-color: steelblue;
 	color: white;
 }
 
@@ -228,16 +229,14 @@ BODY.home #popstats .popstat:hover .hovercontent {
 
 BODY.home #popstats .popstat:hover .hovercontent .button {
 	background-color: white;
-	border: .05em solid lightsteelblue;
+	border: .05em solid;
 	border-radius: 5%;
-	color: steelblue;
 	padding: .75em;
 	margin-top: 1.25em;
 }
 
 BODY.home #popstats .popstat:hover .hovercontent .button:hover {
-	background-color: steelblue;
-	border: .05em solid lightsteelblue;
+	border: .05em solid;
 	color: white;
 }
 
@@ -306,7 +305,7 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	color: white;
 	font-size: 0.7em;
 	font-weight: 300;
-	margin-top: 1.5em;
+	margin-top: 5em;
 	text-align: center;
 	white-space: nowrap;
 	width: 100%;

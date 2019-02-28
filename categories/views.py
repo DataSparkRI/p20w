@@ -18,33 +18,28 @@ def page(request, category_slug, page_type):
 	indicators = Indicator.objects.filter(category=category)
 
 	popstats = []
+	hp_popstat_colors = []
 	if (page_type == 'home'):
 		title_element = 'Rhode Island Skills & Jobs Dashboard'
 		header_text = 'Rhode Island Skills & Jobs'
 		at_a_glance_header = 'Building a talented pipeline.'
-
-		# Get rid of this - pull from DB
-		popstats.append({
-						'label': 'K-12 Education',
-						'stat': '83%',
-						'explainer': 'of students graduate high school in 4 years (2016)',
-						'link': '/k-12-education',
-						'icon': 'fa-school'
-						}) 
-		popstats.append({
-						'label': 'Higher Ed',
-						'stat': '47%',
-						'explainer': 'of working-age RIers hold a postsecondary degree or credential',
-						'link': '/higher-education',
-						'icon': 'fa-graduation-cap'
-						}) 
-		popstats.append({
-						'label': 'Workforce',
-						'stat': '3700+',
-						'explainer': 'Served through Real Jobs RI (Sept 2018)',
-						'link': '/workforce',
-						'icon': 'fa-cogs'
-						})  			
+		hp_popstats = Category.objects.exclude(name='Home')
+		for hp_popstat in hp_popstats: 
+			popstats.append({
+							'label': hp_popstat.navigation_name,
+							'stat': hp_popstat.homepage_pop_stat,
+							'explainer': hp_popstat.homepage_pop_stat_explainer,
+							'link': '/' + hp_popstat.slug,
+							'icon': hp_popstat.homepage_pop_stat_icon,
+							'class': hp_popstat.slug
+			})
+			hp_popstat_colors.append({
+							'class': hp_popstat.slug,
+							'color': hp_popstat.color,
+							'color_light': hp_popstat.color_light,
+							'color_lightest': hp_popstat.color_lightest,
+			})
+		
 	elif (page_type == 'category'):
 		title_element = f'{category.name} | Rhode Island Skills & Jobs Dashboard'
 		header_text = category.name
@@ -68,6 +63,7 @@ def page(request, category_slug, page_type):
 				'categories': categories,
 				'indicators': indicators,
 				'popstats': popstats,
+				'hp_popstat_colors': hp_popstat_colors,
 				'page_type': page_type,
 				'title_element': title_element,
 				'header_text': header_text,
