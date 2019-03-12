@@ -1,5 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField
+import re
 
 class Indicator(models.Model):
 	name = models.CharField(max_length=20, help_text='Reference for internal use only. Does not display.')
@@ -27,3 +28,7 @@ class Indicator(models.Model):
 
 	def get_category(self):
 		return self.category.name 
+		
+	def get_embed_url(self):
+		url = re.search('src="([^"]*)"', self.dashboard_embed)
+		return url.group(1)

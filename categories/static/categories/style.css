@@ -287,6 +287,28 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	width: 100%;
 }
 
+.deep_dive_button {
+	text-align: right;
+}
+
+.deep_dive_button a {
+	background-color: white;
+	border: 1px solid steelblue;
+	color: steelblue;
+	font-weight: bold;
+	padding: .5em;
+	text-decoration: none;
+}
+
+.deep_dive_button a:hover {
+	background-color: steelblue;
+	border-color: lightsteelblue;
+	color: white;
+}
+
+.full_size_dashboard_link {
+	display: none;
+}
 
 #site_footer {
 	padding-bottom: 3em;
@@ -348,4 +370,10 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 #partnerlogos div img {
 	padding: 2px;
 	width: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+	.full_size_dashboard_link {
+		display: block;
+	}
 }

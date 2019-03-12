@@ -11,13 +11,15 @@
    	<style type="text/css">
 		#page_intro h1,
 		#popstats .popstat .stat,
-		#indicators .indicator h2 {
+		#indicators .indicator h2,
+		.deep_dive_button a {
 			color: {{ category.color }};
 		}
 
 		#at_a_glance,
 		#popstats .popstat .label,
-		#popstats .popstat:hover {
+		#popstats .popstat:hover,
+		.deep_dive_button a:hover {
 			background-color: {{ category.color }}
 		}
 
@@ -29,12 +31,17 @@
 			background-color: {{ category.color_light }};
 		}
 
-		#popstats .popstat {
+		#popstats .popstat,
+		.deep_dive_button a:hover {
 			border-color: {{ category.color_light }};
 		}
 
 		#page_intro h1 {
 			border-color: {{ category.color_lightest }};
+		}
+		
+		.deep_dive_button a {
+			border-color: {{ category.color }};
 		}
 
 		{% for navcat in categories %}
@@ -156,7 +163,7 @@
 					{% if indicator.info_graphic  %}
 					 	<div><img src="/media/{{ indicator.info_graphic }}"></div>
 					{% endif %}
-	                <div class=text><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>View interactive data here</a> </div>
+	                <div class=deep_dive_button><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>view interactive data</a> </div>
 				</section>
 			{% endfor %}
 		</section>
@@ -167,6 +174,7 @@
 			<section class=indicator>
 				<h2><a id='q{{ indicator.id }}'></a>{{ indicator.question }}</h2>
 				<div class=text>{{ indicator.text | safe }}</div>
+				<div class='full_size_dashboard_link'><a  href='{{ indicator.get_embed_url }}' target=_new>Open full size in new window</a></div>
 				<div class=dashboard style='padding-bottom: calc({{ indicator.aspect_ratio_height|div:indicator.aspect_ratio_width|mul:100 }}% + 55px);'>{{ indicator.dashboard_embed | safe }}</div>
 			</section>
 		{% endfor %}
