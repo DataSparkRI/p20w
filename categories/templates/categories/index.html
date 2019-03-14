@@ -152,6 +152,17 @@
 	{% if page_type == 'home' or page_type == 'category'%}
 		<section class='text'>{{ category.narrative_text | safe }}</section>
 	{% endif %}
+	{% if page_type == 'category' and category.name == 'Higher Education'%}
+		<section class='text'>
+		<div id=opcsteps>
+			<img src="{% static '/categories/images/opc_images/1aa.png' %}">
+			<img src="{% static '/categories/images/opc_images/2aa.png' %}">
+			<img src="{% static '/categories/images/opc_images/3aa.png' %}">
+			<img src="{% static '/categories/images/opc_images/4aa.png' %}">
+			<img src="{% static '/categories/images/opc_images/5aa.png' %}">
+		</div>
+		</section>
+	{% endif %}
 
 	{# INDICATORS #}
 	{% if page_type == 'category' and indicators %}	
