@@ -289,23 +289,28 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	width: 100%;
 }
 
+.infographic {
+	text-align: center
+}
+
 .deep_dive_button {
 	text-align: right;
 }
 
 .deep_dive_button a {
 	background-color: white;
-	border: 1px solid steelblue;
-	color: steelblue;
+	border: 1px solid lightsteelblue;
+	border-radius: 5% / 20%;
+	color: white;
 	font-weight: bold;
 	padding: .5em;
 	text-decoration: none;
 }
 
 .deep_dive_button a:hover {
-	background-color: steelblue;
+	background-color: white;
 	border-color: lightsteelblue;
-	color: white;
+	color: steelblue;
 }
 
 .full_size_dashboard_link {
@@ -387,6 +392,10 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	flex-basis: 1;
 	width: 15vw;
 	height: 15vw;
+}
+
+#workforceimage {
+	text-align: center;
 }
 
 @media only screen 

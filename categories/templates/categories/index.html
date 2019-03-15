@@ -12,14 +12,14 @@
 		#page_intro h1,
 		#popstats .popstat .stat,
 		#indicators .indicator h2,
-		.deep_dive_button a {
+		.deep_dive_button a:hover {
 			color: {{ category.color }};
 		}
 
 		#at_a_glance,
 		#popstats .popstat .label,
 		#popstats .popstat:hover,
-		.deep_dive_button a:hover {
+		.deep_dive_button a {
 			background-color: {{ category.color }}
 		}
 
@@ -32,7 +32,7 @@
 		}
 
 		#popstats .popstat,
-		.deep_dive_button a:hover {
+		.deep_dive_button a {
 			border-color: {{ category.color_light }};
 		}
 
@@ -40,7 +40,7 @@
 			border-color: {{ category.color_lightest }};
 		}
 		
-		.deep_dive_button a {
+		.deep_dive_button a:hover {
 			border-color: {{ category.color }};
 		}
 
@@ -162,6 +162,13 @@
 			<img src="{% static '/categories/images/opc_images/5aa.png' %}">
 		</div>
 		</section>
+	{% endif %}	
+	{% if page_type == 'category' and category.name == 'Workforce'%}
+		<section class='text'>
+		<div id=workforceimage>
+			<img src="{% static '/categories/images/dlt_images/workforce_category_image.png' %}">
+		</div>
+		</section>
 	{% endif %}
 
 	{# INDICATORS #}
@@ -172,9 +179,9 @@
 					<h2><a id='q{{ indicator.id }}'></a>{{ indicator.question }}</h2>
 					<div class=text>{{ indicator.desc_text | safe }}</div>
 					{% if indicator.info_graphic  %}
-					 	<div><img src="/media/{{ indicator.info_graphic }}"></div>
+					 	<div class=infographic><img src="/media/{{ indicator.info_graphic }}"></div>
 					{% endif %}
-	                <div class=deep_dive_button><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>view interactive data</a> </div>
+	                <div class=deep_dive_button><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>view interactive dashboard</a> </div>
 				</section>
 			{% endfor %}
 		</section>
