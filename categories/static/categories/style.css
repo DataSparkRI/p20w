@@ -293,6 +293,10 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	text-align: center
 }
 
+.infographic img {
+	max-width: 800px;
+}
+
 .deep_dive_button {
 	text-align: right;
 }
@@ -396,6 +400,11 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 
 #workforceimage {
 	text-align: center;
+}
+
+#workforceimage img {
+	text-align: center;
+	max-width: 800px;
 }
 
 @media only screen 
