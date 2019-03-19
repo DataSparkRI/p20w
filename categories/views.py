@@ -20,8 +20,8 @@ def page(request, category_slug, page_type):
 	popstats = []
 	hp_popstat_colors = []
 	if (page_type == 'home'):
-		title_element = 'Rhode Island Skills & Jobs Dashboard'
-		header_text = 'Rhode Island Skills & Jobs'
+		title_element = 'Rhode Island Talent Dashboard'
+		header_text = 'Rhode Island Talent Dashboard'
 		at_a_glance_header = 'Building a talented pipeline.'
 		hp_popstats = Category.objects.exclude(name='Home')
 		for hp_popstat in hp_popstats: 
@@ -41,7 +41,7 @@ def page(request, category_slug, page_type):
 			})
 		
 	elif (page_type == 'category'):
-		title_element = f'{category.name} | Rhode Island Skills & Jobs Dashboard'
+		title_element = f'{category.name} | Rhode Island Talent Dashboard'
 		header_text = category.name
 		at_a_glance_header = f'Rhode Island {category.at_a_glance_label} at a glance...'
 		for indicator in indicators:
@@ -52,7 +52,7 @@ def page(request, category_slug, page_type):
                                'link': f'#q{indicator.id}'
                            })
 	elif (page_type == 'deepdive'):
-		title_element = f'{category.name} | Deep Dive into Data | Rhode Island Skills & Jobs Dashboard'
+		title_element = f'{category.name} | Deep Dive into Data | Rhode Island Talent Dashboard'
 		header_text = category.name
 		category.intro_header = 'Deep Dive Into Data'
 		at_a_glance_header = ''

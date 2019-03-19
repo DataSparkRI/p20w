@@ -6,4 +6,4 @@ OUTPUT
 dbdump.json
 */migrations/*
 db.sqlite3
-
+/staticfiles/
