@@ -5,5 +5,5 @@ __pycache__/
 OUTPUT
 dbdump.json
 */migrations/*
-staticfiles/*
+db.sqlite3
 

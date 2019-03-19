@@ -140,8 +140,7 @@ section {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: stretch;
+	justify-content: center;
 	align-content: flex-start;
 }
 
@@ -317,9 +316,9 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	color: steelblue;
 }
 
-.full_size_dashboard_link {
-	display: none;
-}
+/*.full_size_dashboard_link {*/
+/*	display: none;*/
+/*}*/
 
 #site_footer {
 	padding-bottom: 3em;
@@ -407,11 +406,11 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	max-width: 800px;
 }
 
-@media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 820px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-	.full_size_dashboard_link {
-		display: block;
-	}
-}
+/*@media only screen */
+/*  and (min-device-width: 320px) */
+/*  and (max-device-width: 820px)*/
+/*  and (-webkit-min-device-pixel-ratio: 2) {*/
+/*	.full_size_dashboard_link {*/
+/*		display: block;*/
+/*	}*/
+/*}*/

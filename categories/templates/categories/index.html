@@ -181,7 +181,7 @@
 					{% if indicator.info_graphic  %}
 					 	<div class=infographic><img src="/media/{{ indicator.info_graphic }}"></div>
 					{% endif %}
-	                <div class=deep_dive_button><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>view interactive dashboard</a> </div>
+	                <div class=deep_dive_button><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>View Interactive Dashboard</a> </div>
 				</section>
 			{% endfor %}
 		</section>
@@ -201,6 +201,11 @@
 	{% elif page_type == 'category' or page_type == 'deepdive' %}
 		<section><p>{{ page_type }} No indicators to show in this category.</p></section>
 	{% endif %}
+	
+	{% if page_type == 'category' or page_type == 'deepdive' %}
+		<section id=back_to_top><a href=#top>Back to top of page.</section>
+	{% endif %}
+
 
 	<section id='site_footer'>		
 		<div id='partnerlogos'>
