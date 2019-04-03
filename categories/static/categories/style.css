@@ -8,17 +8,15 @@ section {
 }
 
 #back_to_top {
-background-color: steelblue;
-border: 1px solid white;
-position: fixed;
-bottom: 20px;
-right: 20px;
-width: auto;
-padding: 2px;
-margin: 0;
-text-align: center;
-z-index: 999;
-box-shadow:1px 1px 3px gray;
+	background-color: black;
+	bottom: 0;
+	font-size: 3em;
+	opacity: .75;
+	padding: .25em;
+	position: fixed;
+	right: 0;
+	margin: 0;
+	z-index: 999;
 }
 
 #back_to_top a {
@@ -334,9 +332,6 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	color: steelblue;
 }
 
-/*.full_size_dashboard_link {*/
-/*	display: none;*/
-/*}*/
 
 #site_footer {
 	padding-bottom: 3em;
@@ -415,11 +410,13 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	height: 15vw;
 }
 
-#workforceimage, #workforceimage2 {
+#workforceimage, 
+#workforceimage2 {
 	text-align: center;
 }
 
-#workforceimage img, #workforceimage2 img {
+#workforceimage img, 
+#workforceimage2 img {
 	text-align: center;
 	max-width: 800px;
 }

@@ -199,9 +199,9 @@
 			<section class=indicator>
 				<h2><a id='q{{ indicator.id }}'></a>{{ indicator.question }}</h2>
 				<div class=text>{{ indicator.text | safe }}</div>
-				<div class='full_size_dashboard_link'><a  href='{{ indicator.get_embed_url }}' target=_new>Open full size in new window</a></div>
+				<div class='deep_dive_button'><a  href='{{ indicator.get_embed_url }}' target=_new>Open full size in new window</a></div>
 				<div class=dashboard style='padding-bottom: calc({{ indicator.aspect_ratio_height|div:indicator.aspect_ratio_width|mul:100 }}% + 55px);'>{{ indicator.dashboard_embed | safe }}</div>
-                                <div class='full_size_dashboard_link'><a  href='/media/{{ indicator.download }}'>Download File</a></div>
+                <div class='deep_dive_button' style='margin-top: 1em'><a href='/media/{{ indicator.download }}'>Download CSV File</a></div>
 			</section>
 		{% endfor %}
 		</section>
@@ -211,7 +211,7 @@
 	{% endif %}
 	
 	{% if page_type == 'category' or page_type == 'deepdive' %}
-		<section id=back_to_top><a href=#top>Back to top of page.</section>
+		<section id=back_to_top><a href=#top><span class='fas fa-arrow-circle-up'></span></section>
 	{% endif %}
 
 

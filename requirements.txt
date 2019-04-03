@@ -10,3 +10,4 @@ django-tinymce >= 2.7.0
 Pillow
 gunicorn
 django-admin-sortable2
+django-cleanup
