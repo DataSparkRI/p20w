@@ -194,6 +194,7 @@
 				<div class=text>{{ indicator.text | safe }}</div>
 				<div class='full_size_dashboard_link'><a  href='{{ indicator.get_embed_url }}' target=_new>Open full size in new window</a></div>
 				<div class=dashboard style='padding-bottom: calc({{ indicator.aspect_ratio_height|div:indicator.aspect_ratio_width|mul:100 }}% + 55px);'>{{ indicator.dashboard_embed | safe }}</div>
+                                <div class='full_size_dashboard_link'><a  href='/media/{{ indicator.download }}'>Download File</a></div>
 			</section>
 		{% endfor %}
 		</section>

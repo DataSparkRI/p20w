@@ -7,6 +7,24 @@ section {
 	padding: 3em 10%;
 }
 
+#back_to_top {
+background-color: steelblue;
+border: 1px solid white;
+position: fixed;
+bottom: 20px;
+right: 20px;
+width: auto;
+padding: 2px;
+margin: 0;
+text-align: center;
+z-index: 999;
+box-shadow:1px 1px 3px gray;
+}
+
+#back_to_top a {
+color: white;
+}
+
 /* set these to twice the section padding% */
 #indicators .indicator:nth-child(even) {
 	position: relative;

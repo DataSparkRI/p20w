@@ -19,6 +19,7 @@ class Indicator(models.Model):
 	pop_stat = models.CharField(max_length=5, help_text='Number that displays in the pop-stat at the top of the screen. Include %$ etc. 5 character max')
 	pop_stat_label = models.CharField(max_length=12, help_text='Label at the top of the pop-stat. 12 character max.')
 	pop_stat_explainer = models.CharField(max_length=60, help_text='Explainer under the pop-stat. 60 character max.')
+	download = models.FileField(upload_to = 'indicator_file',null=True, blank=True)
 
 	def __str__(self):
 		return f'{self.category.name} - {self.name}'
@@ -32,3 +33,4 @@ class Indicator(models.Model):
 	def get_embed_url(self):
 		url = re.search('src="([^"]*)"', self.dashboard_embed)
 		return url.group(1)
+

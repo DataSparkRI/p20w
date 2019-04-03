@@ -23,8 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -40,7 +39,8 @@ INSTALLED_APPS = [
 
     'adminsortable2',
     'mathfilters',
-    'tinymce'
+    'tinymce',
+    'django_cleanup'
 ]
 
 MIDDLEWARE = [
