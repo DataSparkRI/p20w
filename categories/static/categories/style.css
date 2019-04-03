@@ -397,11 +397,11 @@ BODY.home #popstats .popstat:hover .hovercontent .button:hover {
 	height: 15vw;
 }
 
-#workforceimage {
+#workforceimage, #workforceimage2 {
 	text-align: center;
 }
 
-#workforceimage img {
+#workforceimage img, #workforceimage2 img {
 	text-align: center;
 	max-width: 800px;
 }
