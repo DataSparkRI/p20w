@@ -149,7 +149,7 @@
 	{% endif %}
 
 	{# BELOW AT-A-GLANCE #}
-	{% if page_type == 'home' or page_type == 'category'%}
+	{% if page_type == 'home' or page_type == 'category' and category.name != 'Workforce'%}
 		<section class='text'>{{ category.narrative_text | safe }}</section>
 	{% endif %}
 	{% if page_type == 'category' and category.name == 'Higher Education'%}
