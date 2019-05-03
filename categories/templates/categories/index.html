@@ -191,9 +191,11 @@
 					<h2><a id='q{{ indicator.id }}'></a>{{ indicator.question }}</h2>
 					<div class=text>{{ indicator.desc_text | safe }}</div>
 					{% if indicator.info_graphic  %}
-					 	<div class=infographic><img src="/media/{{ indicator.info_graphic }}"></div>
+					 	<div class=infographic><img src="/media/{{ indicator.info_graphic }}">
+						<div class=deep_dive_button style='padding-top:20px'><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>View Interactive Dashboard</a> </div>
+						</div>
 					{% endif %}
-	                <div class=deep_dive_button><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>View Interactive Dashboard</a> </div>
+	              <!--  <div class=deep_dive_button><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>View Interactive Dashboard</a> </div>  -->
 				</section>
 			{% endfor %}
 		</section>
