@@ -149,13 +149,11 @@
 	{% endif %}
 
 	{# BELOW AT-A-GLANCE #}
-	{% if page_type == 'home' or page_type == 'category' and category.name != 'Workforce'%}
+	{% if page_type == 'home'%}
 		<section class='text'>{{ category.narrative_text | safe }}</section>
 	{% endif %}
 	{% if page_type == 'category' and category.name == 'Higher Education'%}
-		<section class='text'>
-		
-		<div class='text'>{{category.narrative_text | safe}}</div>
+		<section class='text'>{{category.narrative_text | safe}}
 		<!-- <div id=opcsteps>
 			<img src="{% static '/categories/images/opc_images/1aa.png' %}">
 			<img src="{% static '/categories/images/opc_images/2aa.png' %}">
