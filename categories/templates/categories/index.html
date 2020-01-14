@@ -109,7 +109,7 @@
 					    </div>
 					</div>
 				{% elif navcat.navigation_name != 'Deep Dive'  %}
-					<a href='/{{ navcat.slug }}'>{{ navcat.navigation_name }}</a>
+                                        <a href='/{{ navcat.slug }}'>{{ navcat.navigation_name }}</a>
 				{% endif %}
 			{% endfor %}
 		</div>
@@ -206,9 +206,10 @@
 			<section class=indicator>
 				<h2><a id='q{{ indicator.id }}'></a>{{ indicator.question }}</h2>
 				<div class=text>{{ indicator.text | safe }}</div>
-				<div class='deep_dive_button'><a  href='{{ indicator.get_embed_url }}' target=_new>Open full size in new window</a></div>
+				<div class='deep_dive_button'><a  href='{{ indicator.get_embed_url }}' target=_new>Open full size in new window</a> 
+					                      <a href='/media/{{ indicator.download }}'>Download CSV File</a></div>
 				<div class=dashboard style='padding-bottom: calc({{ indicator.aspect_ratio_height|div:indicator.aspect_ratio_width|mul:100 }}% + 55px);'>{{ indicator.dashboard_embed | safe }}</div>
-                <div class='deep_dive_button' style='margin-top: 1em'><a href='/media/{{ indicator.download }}'>Download CSV File</a></div>
+				<!--  <div class='deep_dive_button' style='margin-top: 1em'><a href='/media/{{ indicator.download }}'>Download CSV File</a></div>  -->
 			</section>
 		{% endfor %}
 		</section>

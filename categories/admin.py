@@ -4,7 +4,7 @@ from categories.models import Category
 
 
 class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
-	pass
+        pass
 
 
 admin.site.register(Category, CategoryAdmin)
