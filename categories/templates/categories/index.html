@@ -104,8 +104,16 @@
 						&nbsp;  <i class="fas fa-chevron-down"></i></button>
 					    <div class="dropdown-content">
 					      <a href="/{{ navcat.slug }}">Overview</a>
+					    <!--
 					      <a href="/deep-dive/{{ navcat.slug }}">Deep Dive</a>
-					      <a href='{{ navcat.agency_url }}' target="_blank">Agency Home</a>
+					    --> 
+					      {% for indicator in all_indicators %}
+					             {% if indicator.category.name == navcat.name  %}
+						     <a href="/deep-dive/{{ navcat.slug }}/{{ indicator.id }}">{{ indicator.name }}</a>
+						     {% endif %}
+					      {% endfor %}
+					   
+					    <a href='{{ navcat.agency_url }}' target="_blank">Agency Home</a>
 					    </div>
 					</div>
 				{% elif navcat.navigation_name != 'Deep Dive'  %}
@@ -192,10 +200,10 @@
 					<div class=text>{{ indicator.desc_text | safe }}</div>
 					{% if indicator.info_graphic  %}
 					 	<div class=infographic><img src="/media/{{ indicator.info_graphic }}">
-						<div class=deep_dive_button style='padding-top:20px'><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>View Interactive Dashboard</a> </div>
+						<!--<div class=deep_dive_button style='padding-top:20px'><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>View Interactive Dashboard</a> </div> -->
+						<div class=deep_dive_button style='padding-top:20px'><a href='../deep-dive/{{category_slug}}/{{ indicator.id  }}'>View Interactive Dashboard</a> </div>
 						</div>
 					{% endif %}
-	              <!--  <div class=deep_dive_button><a href='../deep-dive/{{category_slug}}/#q{{ indicator.id  }}'>View Interactive Dashboard</a> </div>  -->
 				</section>
 			{% endfor %}
 		</section>
@@ -209,13 +217,25 @@
 				<div class='deep_dive_button'><a  href='{{ indicator.get_embed_url }}' target=_new>Open full size in new window</a> 
 					                      <a href='/media/{{ indicator.download }}'>Download CSV File</a></div>
 				<div class=dashboard style='padding-bottom: calc({{ indicator.aspect_ratio_height|div:indicator.aspect_ratio_width|mul:100 }}% + 55px);'>{{ indicator.dashboard_embed | safe }}</div>
-				<!--  <div class='deep_dive_button' style='margin-top: 1em'><a href='/media/{{ indicator.download }}'>Download CSV File</a></div>  -->
 			</section>
 		{% endfor %}
 		</section>
 
 	{% elif page_type == 'category' or page_type == 'deepdive' %}
 		<section><p>{{ page_type }} No indicators to show in this category.</p></section>
+
+	{% elif page_type == 'deepdive_single' and indicator %}
+                <section id=indicators>
+                        <section class=indicator>
+                                <h2><a id='q{{ indicator.id }}'></a>{{ indicator.question }}</h2>
+                                <div class=text>{{ indicator.text | safe }}</div>
+                                <div class='deep_dive_button'><a  href='{{ indicator.get_embed_url }}' target=_new>Open full size in new window</a>
+                                                              <a href='/media/{{ indicator.download }}'>Download CSV File</a></div>
+                                <div class=dashboard style='padding-bottom: calc({{ indicator.aspect_ratio_height|div:indicator.aspect_ratio_width|mul:100 }}% + 55px);'>{{ indicator.dashboard_embed | safe }}</div>
+                        </section>
+                </section>
+
+
 	{% endif %}
 	
 	{% if page_type == 'category' or page_type == 'deepdive' %}
