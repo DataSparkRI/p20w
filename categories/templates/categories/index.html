@@ -89,6 +89,28 @@
 			}
 		{% endfor %}
 
+
+		.collapsible {
+			cursor: pointer;
+		}
+
+		.collapsible:after {
+			content: '\002B';
+			margin-left:2.5em
+		}
+
+		.active:after {
+			content: '\2212';
+			margin-left:2.5em
+		}
+
+		.sub_content {
+			display: none;
+			overflow: hidden;
+			text-indent: 15px;
+			# white-space: nowrap;
+		}
+
    </style>
 </head>
 
@@ -104,15 +126,24 @@
 						&nbsp;  <i class="fas fa-chevron-down"></i></button>
 					    <div class="dropdown-content">
 					      <a href="/{{ navcat.slug }}">Overview</a>
-					    <!--
+					    <!--   Old way to show deep dive page
 					      <a href="/deep-dive/{{ navcat.slug }}">Deep Dive</a>
-					    --> 
+					    -->
+						
+					      <!-- New way to show deep dive page -->
+                                              <a class="collapsible" >Deep Dive</a>
+
+                                              <div class = "sub_content">
+					     
 					      {% for indicator in all_indicators %}
 					             {% if indicator.category.name == navcat.name  %}
 						     <a href="/deep-dive/{{ navcat.slug }}/{{ indicator.id }}">{{ indicator.name }}</a>
 						     {% endif %}
 					      {% endfor %}
-					   
+					      
+					      </div>
+
+
 					    <a href='{{ navcat.agency_url }}' target="_blank">Agency Home</a>
 					    </div>
 					</div>
@@ -159,6 +190,10 @@
 	{# BELOW AT-A-GLANCE #}
 	{% if page_type == 'home'%}
 		<section class='text'>{{ category.narrative_text | safe }}</section>
+		{% if category.info_graphic  %}
+                       <div class=infographic><img src="/media/{{ category.info_graphic }}">
+                       </div>
+                {% endif %}
 	{% endif %}
 	{% if page_type == 'category' and category.name == 'Higher Education'%}
 		<section class='text'>{{category.narrative_text | safe}}
@@ -256,3 +291,22 @@
 		</div>
 	</section>
 </body>
+
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+</script>
